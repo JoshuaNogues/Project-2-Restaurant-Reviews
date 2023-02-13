@@ -7,8 +7,11 @@ var mongoose = require('mongoose')
 const session = require('express-session');
 const MongoStore = require('connect-mongo');
 
+const hbs = require('hbs');
+
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
+var restaurantsRouter = require('./routes/restaurants');
 
 var app = express();
 
@@ -46,6 +49,7 @@ app.use(
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
+app.use('/restaurants', restaurantsRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
