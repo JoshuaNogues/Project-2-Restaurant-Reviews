@@ -1,6 +1,8 @@
 var express = require('express');
 var router = express.Router();
 
+const { isLoggedIn, isOwner, isNotOwner } = require('../middleware/route-guard')
+
 const Restaurant = require('../models/Restaurant.model')
 
 const Review = require('../models/Review.model')
@@ -18,11 +20,11 @@ router.get('/view-restaurants', (req, res, next) => {
 
 });
 
-router.get('/add-restaurant', (req, res, next) => {
+router.get('/add-restaurant', isLoggedIn, (req, res, next) => {
     res.render('restaurants/add-restaurant.hbs');
   });
 
-router.post('/add-restaurant', (req, res, next) => {
+router.post('/add-restaurant', isLoggedIn, (req, res, next) => {
 
     const { name, description, imageUrl } = req.body
 
@@ -42,14 +44,72 @@ router.post('/add-restaurant', (req, res, next) => {
 
 })
 
-router.post('/add-review/:id', (req, res, next) => {
+router.get('/details/:id', (req, res, next) => {
+    
+    Restaurant.findById(req.params.id)
+    .populate('owner')
+    .populate({
+        path: "reviews",
+        populate: {path: "user"}
+    })
+    .then((foundRestaurant) => {
+        res.render('restaurants/restaurant-details.hbs', foundRestaurant)
+    })
+    .catch((err) => {
+        console.log(err)
+    })
+
+})
+
+router.get('/edit/:id', isOwner, (req, res, next) => {
+
+    Restaurant.findById(req.params.id)
+    .then((foundRestaurant) => {
+        res.render('restaurants/edit-restaurant.hbs', foundRestaurant)
+    })
+    .catch((err) => {
+        console.log(err)
+    })
+})
+
+router.post('/edit/:id', (req, res, next) => {
+    const { name, description, imageUrl } = req.body
+    Restaurant.findByIdAndUpdate(req.params.id, 
+        {
+            name, 
+            description,
+            imageUrl
+        },
+        {new: true})
+    .then((updatedRestaurant) => {
+        console.log(updatedRestaurant)
+        res.redirect(`/restaurants/details/${req.params.id}`)
+    })
+    .catch((err) => {
+        console.log(err)
+    })
+}) 
+
+router.get('/delete/:id', isOwner, (req, res, next) => {
+    Restaurant.findByIdAndDelete(req.params.id)
+    .then((confirmation) => {
+        console.log(confirmation)
+        res.redirect('/restaurants/view-restaurants')
+    })
+    .catch((err) => {
+        console.log(err)
+    })
+})
+
+
+router.post('/add-review/:id', isNotOwner, (req, res, next) => {
 
     Review.create({
         user: req.session.user._id,
         comment: req.body.comment
     })
     .then((newReview) => {
-       return Room.findByIdAndUpdate(req.params.id, 
+       return Restaurant.findByIdAndUpdate(req.params.id, 
             {
                 $push: {reviews: newReview._id}
             },
