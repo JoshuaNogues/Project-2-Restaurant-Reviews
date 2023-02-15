@@ -1,8 +1,13 @@
+<div class='each-restaurant'>
 {{> eachRestaurant}}
 
-<a href="/restaurants/edit/{{_id}}"><button>Edit</button></a>
+<div class="edit-delete">
 
-<a href="/restaurants/delete/{{_id}}"><button>Delete</button></a>
+    <a href="/restaurants/edit/{{_id}}"><button>Edit</button></a>
+
+    <a href="/restaurants/delete/{{_id}}"><button>Delete</button></a>
+
+</div>
 
 
 <form id="rating-form">
@@ -28,11 +33,9 @@
 
     </div>
 
-  <input type="submit" value="Submit">
+  <input type="submit" value="Submit" class="submit-btn">
 
 </form>
-
-<p id="average-rating"></p>
 
 <form action="/restaurants/add-review/{{_id}}" method="post">
     <label for="">New Comment</label>
@@ -41,6 +44,8 @@
     <button type="submit">Add Comment</button>
 
 </form>
+
+<h4>Reviews</h4>
 
 {{#if reviews}}
 
@@ -62,3 +67,5 @@
     <p>No Reviews yet</p>
 
 {{/if}}
+
+</div>
