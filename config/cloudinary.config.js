@@ -17,6 +17,8 @@ const storage = new CloudinaryStorage({
     allowed_formats: ['jpg', 'png', 'jpeg'],
     folder: 'project-2' // The name of the folder in cloudinary
     // resource_type: 'raw' => this is in case you want to upload other type of files, not just images
+    ,
+     timeout: 600000
   }
 });
 
