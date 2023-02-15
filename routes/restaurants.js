@@ -1,6 +1,8 @@
 var express = require('express');
 var router = express.Router();
 
+const fileUploader = require('../config/cloudinary.config');
+
 const { isLoggedIn, isOwner, isNotOwner } = require('../middleware/route-guard')
 
 const Restaurant = require('../models/Restaurant.model')
@@ -24,14 +26,14 @@ router.get('/add-restaurant', isLoggedIn, (req, res, next) => {
     res.render('restaurants/add-restaurant.hbs');
   });
 
-router.post('/add-restaurant', isLoggedIn, (req, res, next) => {
+router.post('/add-restaurant', isLoggedIn, fileUploader.single('imageUrl'), (req, res, next) => {
 
-    const { name, description, imageUrl } = req.body
+    const { name, description } = req.body
 
     Restaurant.create({
         name,
         description,
-        imageUrl,
+        imageUrl: req.file.path,
         owner: req.session.user._id
     })
     .then((createdRestaurant) => {
@@ -117,7 +119,7 @@ router.post('/add-review/:id', isNotOwner, (req, res, next) => {
     })
     .then((restaurantWithReview) => {
         console.log(restaurantWithReview)
-        res.redirect(`/restaurant/details/${req.params.id}`)
+        res.redirect(`/restaurants/details/${req.params.id}`)
     })
     .catch((err) => {
         console.log(err)

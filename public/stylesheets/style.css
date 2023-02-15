@@ -1,8 +1,151 @@
+@import url('https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap');
+
+* {
+  padding: 0px;
+  margin: 0px;
+}
+
 body {
-  padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
 a {
   color: #00B7FF;
+}
+
+.logo {
+  width: 180px;
+}
+
+.header {
+  font-family: 'Archivo Black', sans-serif;
+  font-size: xx-large ;
+  color: white;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  background-image: url(../images/the-melt.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100vh;
+  text-shadow: 1px 1px 5px #000000;
+}
+
+.nav-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  background-color: #f8f8f8;
+}
+
+.logo img {
+  height: 40px;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropbtn {
+  font-size: 16px;
+  border: none;
+  background-color: inherit;
+  cursor: pointer;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  z-index: 1;
+  background-color: #f8f8f8;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.nav-bar a {
+  color: #333333;
+  text-decoration: none;
+  margin-left: 10px;
+  font-weight: bold;
+}
+
+.nav-bar a:hover {
+  color: #666666;
+}
+
+.signup-button {
+  background-color: red;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.signup-button a {
+  margin: 0px;
+  color: white;
+  font-weight: 200;
+}
+
+.login-button {
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.login-button a {
+  margin: 0px;
+}
+
+.signup-page {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.view-restaurants {
+  background-color: red;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  margin-top: 25px;
+}
+
+.view-restaurants a {
+  margin: 0px;
+  color: white;
+  font-weight: 200;
+  text-decoration: none;
+}
+
+/* all restaurant images */
+.restaurant-img {
+  width: 348px;
+  height: 348px;
+  object-fit: cover;
+  border-radius: 5px;
+}
+
+.restaurants-h2, .each-restaurant {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
 }

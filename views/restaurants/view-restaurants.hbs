@@ -1,9 +1,13 @@
-<h2>Restaurants</h2>
+<div class="restaurants-h2">
+    <h2>Restaurants</h2>
+</div>
 
-{{#each foundRestaurants}}
+<div class="each-restaurant">
+    {{#each foundRestaurants}}
 
-    {{> eachRestaurant}}
+        {{> eachRestaurant}}
 
-    <a href="/restaurants/details/{{_id}}">See Details</a>
+        <a href="/restaurants/details/{{_id}}">See Details</a>
 
-{{/each}}
+    {{/each}}
+</div>

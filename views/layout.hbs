@@ -1,17 +1,34 @@
-<!DOCTYPE html>
 <html>
   <head>
     <title>{{title}}</title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <link rel="stylesheet" href="/stylesheets/style.css" />
   </head>
   <body>
-    <nav>
-      <a href = "/users/signup">Sign Up</a>
-      <a href = "/users/login">Login</a>
-      <a href = "/restaurants/view-restaurants">View Restaurants</a>
-      <a href = "/restaurants/add-restaurant">Add Restaurant</a>
-      <a href = "/users/logout">Logout</a>
-    </nav>
+    <div>
+      <nav class="nav-bar">
+        <div class="logo">
+          <a href="/">
+            <img src="/images/REV-logo-2.png" alt="Your Logo">
+          </a>
+        </div>
+        <div class="dropdown">
+          <button class="dropbtn">Restaurants ⮛</button>
+          <div class="dropdown-content">
+            <a href="/restaurants/view-restaurants">View Restaurants</a>
+            <a href="/restaurants/add-restaurant">For Owners</a>
+          </div>
+        </div>
+        <div class="nav-buttons">
+          <button class="signup-button">
+            <a href="/users/signup">Sign Up</a>
+          </button>
+          <button class="login-button">
+            <a href="/users/login">Login</a>
+          </button>
+        <a href="/users/logout">Logout</a>
+        </div>
+      </nav>
+    </div>
     {{{body}}}
   </body>
 </html>

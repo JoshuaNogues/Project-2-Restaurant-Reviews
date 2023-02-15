@@ -1,19 +1,38 @@
+<div class="signup-page">
+
 <h2>Sign Up</h2>
 
 <form action="/users/signup"  method="post">
 
+    <div>
     <label for="">Username: </label>
+    </div>
+
+    <div>
     <input type="text" name="username">
+    </div>
 
+    <div>
     <label for="">Email: </label>
-    <input type="email" name="email">
+    </div>
 
+    <div>
+    <input type="email" name="email">
+    </div>
+
+    <div>
     <label for="">Password: </label>
+    </div>
+
+    <div>
     <input type="password" name="password">
+    </div>
 
     <button type="submit">Create Account</button>
 
 </form>
+
+</div>
 
 {{#if errorMessage}}
 <p>{{errorMessage}}</p>

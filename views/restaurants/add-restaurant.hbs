@@ -1,6 +1,6 @@
 <h2>Add Restaurant</h2>
 
-<form action="/restaurants/add-restaurant" method="post">
+<form action="/restaurants/add-restaurant" method="post" enctype="multipart/form-data">
     <label for="">Name</label>
     <input type="text" name="name">
 
@@ -8,7 +8,7 @@
     <input type="text" name="description">
 
     <label for="">Image</label>
-    <input type="text" name="imageUrl">
+    <input type="file" name="imageUrl">
 
     <button type="submit">Add Restaurant</button>
 </form>
