@@ -37,6 +37,27 @@
 
 </form>
 
+<div id="rating-display"></div>
+
+{{!-- javascript code to display the avg rating of each restaurant --}}
+
+<script>
+    const form = document.getElementById('rating-form');
+form.addEventListener('submit', function(event) {
+  event.preventDefault(); // Prevent the form from actually submitting
+
+  // Get the selected rating
+  const rating = form.querySelector('input[name="rating"]:checked').value;
+
+  // Update the rating display
+  const ratings = JSON.parse(localStorage.getItem('ratings') || '[]');
+  ratings.push(parseInt(rating));
+  localStorage.setItem('ratings', JSON.stringify(ratings));
+  const averageRating = ratings.reduce((sum, rating) => sum + rating, 0) / ratings.length;
+  const ratingDisplay = document.getElementById('rating-display');
+  ratingDisplay.innerText = `Average rating: ${averageRating.toFixed(1)}`;
+});</script>
+
 <form action="/restaurants/add-review/{{_id}}" method="post">
     <label for="">New Comment</label>
     <input type="text" name="comment">
