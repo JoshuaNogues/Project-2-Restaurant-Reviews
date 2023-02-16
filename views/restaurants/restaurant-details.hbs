@@ -20,16 +20,16 @@
         <label for="rating-1">&#9734;</label>
 
         <input type="radio" name="rating" id="rating-2" value="2">
-        <label for="rating-2">&#9734;&#9734;</label>
+        <label for="rating-2">&#9734;</label>
 
         <input type="radio" name="rating" id="rating-3" value="3">
-        <label for="rating-3">&#9734;&#9734;&#9734;</label>
+        <label for="rating-3">&#9734;</label>
 
         <input type="radio" name="rating" id="rating-4" value="4">
-        <label for="rating-4">&#9734;&#9734;&#9734;&#9734;</label>
+        <label for="rating-4">&#9734;</label>
 
         <input type="radio" name="rating" id="rating-5" value="5">
-        <label for="rating-5">&#9734;&#9734;&#9734;&#9734;&#9734;</label>
+        <label for="rating-5">&#9734;</label>
 
     </div>
 
@@ -56,6 +56,23 @@ form.addEventListener('submit', function(event) {
   const averageRating = ratings.reduce((sum, rating) => sum + rating, 0) / ratings.length;
   const ratingDisplay = document.getElementById('rating-display');
   ratingDisplay.innerText = `Average rating: ${averageRating.toFixed(1)}`;
+});
+
+const ratingInputs = document.querySelectorAll('input[name="rating"]');
+const ratingLabels = document.querySelectorAll('.rating label');
+
+ratingInputs.forEach((input) => {
+  input.addEventListener('click', () => {
+    const selectedRating = input.value;
+
+    ratingLabels.forEach((label, index) => {
+      if (index < selectedRating) {
+        label.classList.add('selected');
+      } else {
+        label.classList.remove('selected');
+      }
+    });
+  });
 });</script>
 
 <form action="/restaurants/add-review/{{_id}}" method="post">

@@ -157,12 +157,6 @@ a {
   align-items: center;
 }
 
-.submit-btn {
-  padding-left: 0%;
-  padding-right: 0%;
-  width: 20%;
-}
-
 /* signup and login pages */
 
 .signup-page {
@@ -259,4 +253,54 @@ h2 {
   max-width: 500px;
   margin: 0 auto;
   text-align: center;
+}
+
+/* restaurant details styling */
+
+#rating-form {
+  background-color: #f8f8f8;
+  border: 1px solid #ccc;
+  padding: 20px;
+  margin: 20px;
+  font-family: Arial, sans-serif;
+  font-size: 16px;
+  max-width: 400px;
+}
+
+.rating {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 10px 0;
+}
+
+.rating input[type="radio"] {
+  display: none;
+}
+
+.rating label {
+  color: #ccc;
+  font-size: 40px;
+  cursor: pointer;
+}
+
+.rating input[type="radio"]:checked + label {
+  color: #fdd835;
+}
+
+.submit-btn {
+  background-color: #4CAF50;
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin-top: 10px;
+  cursor: pointer;
+}
+
+.rating label.selected {
+  color: #fdd835;
 }
