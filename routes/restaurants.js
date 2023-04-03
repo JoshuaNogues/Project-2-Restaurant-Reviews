@@ -14,7 +14,7 @@ router.get('/view-restaurants', (req, res, next) => {
     Restaurant.find()
     .populate('owner')
     .then((foundRestaurants) => {
-        res.render('restaurants/view-restaurants.hbs', { foundRestaurants });
+        res.render('restaurants/view-restaurants.hbs', { foundRestaurants, session: req.session });
     })
     .catch((err) => {
         console.log(err)
@@ -23,7 +23,7 @@ router.get('/view-restaurants', (req, res, next) => {
 });
 
 router.get('/add-restaurant', isLoggedIn, (req, res, next) => {
-    res.render('restaurants/add-restaurant.hbs');
+    res.render('restaurants/add-restaurant.hbs', {session: req.session});
   });
 
 router.post('/add-restaurant', isLoggedIn, fileUploader.single('imageUrl'), (req, res, next) => {
@@ -55,6 +55,7 @@ router.get('/details/:id', (req, res, next) => {
         populate: {path: "user"}
     })
     .then((foundRestaurant) => {
+        foundRestaurant.session = req.session;
         res.render('restaurants/restaurant-details.hbs', foundRestaurant)
     })
     .catch((err) => {
@@ -63,11 +64,12 @@ router.get('/details/:id', (req, res, next) => {
 
 })
 
+
 router.get('/edit/:id', isOwner, (req, res, next) => {
 
     Restaurant.findById(req.params.id)
     .then((foundRestaurant) => {
-        res.render('restaurants/edit-restaurant.hbs', foundRestaurant)
+        res.render('restaurants/edit-restaurant.hbs', {foundRestaurant, session: req.session})
     })
     .catch((err) => {
         console.log(err)

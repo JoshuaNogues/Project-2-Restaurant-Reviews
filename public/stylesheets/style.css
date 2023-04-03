@@ -257,50 +257,144 @@ h2 {
 
 /* restaurant details styling */
 
-#rating-form {
-  background-color: #f8f8f8;
-  border: 1px solid #ccc;
-  padding: 20px;
-  margin: 20px;
-  font-family: Arial, sans-serif;
-  font-size: 16px;
-  max-width: 400px;
-}
+  .each-restaurant {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
 
-.rating {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin: 10px 0;
-}
+  .restaurant-info {
+    width: 70%;
+  }
 
-.rating input[type="radio"] {
-  display: none;
-}
+  .restaurant-info h3 {
+    margin-top: 0;
+    margin-bottom: 10px;
+  }
 
-.rating label {
-  color: #ccc;
-  font-size: 40px;
-  cursor: pointer;
-}
+  .restaurant-info p {
+    margin-top: 0;
+    margin-bottom: 20px;
+  }
 
-.rating input[type="radio"]:checked + label {
-  color: #fdd835;
-}
+  .restaurant-img {
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 10px;
+  }
 
-.submit-btn {
-  background-color: #4CAF50;
-  border: none;
-  color: white;
-  padding: 10px 20px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  margin-top: 10px;
-  cursor: pointer;
-}
+  .edit-delete {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+  }
 
-.rating label.selected {
-  color: #fdd835;
-}
+  .edit-delete button {
+    background-color:red;
+    border: none;
+    color: white;
+    padding: 10px 16px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 5px;
+  }
+
+  .edit-delete button:hover {
+    background-color:darkred;
+  }
+
+  #rating-form {
+    margin-top: 20px;
+  }
+
+  #rating-form h3 {
+    margin-top: 0;
+    margin-bottom: 10px;
+  }
+
+  .rating {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10px;
+  }
+
+  .rating input {
+    display: none;
+  }
+
+  .rating label {
+    font-size: 30px;
+    cursor: pointer;
+    color: #ddd;
+    margin-right: 5px;
+  }
+
+  .rating label:hover,
+  .rating label:hover ~ label,
+  .rating input:checked ~ label {
+    color: #FFD700;
+  }
+
+  .submit-btn {
+    background-color: red;
+    border: none;
+    color: white;
+    padding: 10px 16px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 5px;
+  }
+
+  .submit-btn:hover {
+    background-color: darkred;
+  }
+
+  #rating-display {
+    margin-top: 20px;
+  }
+
+  #rating-display p {
+    margin-top: 0;
+  }
+
+  form[action="/restaurants/add-review/{{_id}}"] {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  form[action="/restaurants/add-review/{{_id}}"] label {
+    margin-bottom: 10px;
+  }
+
+  form[action="/restaurants/add-review/{{_id}}"] input[type="text"] {
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    margin-bottom: 10px;
+  }
+
+  form[action="/restaurants/add-review/{{_id}}"] button {
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 10px 16px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer
+  }
+

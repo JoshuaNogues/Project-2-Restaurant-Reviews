@@ -42,9 +42,16 @@
 {{!-- javascript code to display the avg rating of each restaurant --}}
 
 <script>
-    const form = document.getElementById('rating-form');
+   const form = document.getElementById('rating-form');
+
 form.addEventListener('submit', function(event) {
   event.preventDefault(); // Prevent the form from actually submitting
+  
+  // Check if the user is authenticated
+  if (!isLoggedIn()) {
+    alert('You must be logged in to vote.');
+    return;
+  }
 
   // Get the selected rating
   const rating = form.querySelector('input[name="rating"]:checked').value;
@@ -58,6 +65,7 @@ form.addEventListener('submit', function(event) {
   ratingDisplay.innerText = `Average rating: ${averageRating.toFixed(1)}`;
 });
 
+
 const ratingInputs = document.querySelectorAll('input[name="rating"]');
 const ratingLabels = document.querySelectorAll('.rating label');
 
@@ -66,12 +74,13 @@ ratingInputs.forEach((input) => {
     const selectedRating = input.value;
 
     ratingLabels.forEach((label, index) => {
-      if (index < selectedRating) {
-        label.classList.add('selected');
-      } else {
-        label.classList.remove('selected');
-      }
-    });
+  if (index >= selectedRating - 1) {
+    label.classList.add('selected');
+  } else {
+    label.classList.remove('selected');
+  }
+});
+
   });
 });</script>
 
