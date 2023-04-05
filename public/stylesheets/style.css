@@ -398,3 +398,47 @@ h2 {
     cursor: pointer
   }
 
+  /* edit page styling */
+
+  .edit-page-container {
+    margin: 0 auto;
+    max-width: 600px;
+    padding: 20px;
+  }
+  
+  h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+  }
+  
+  .form-group {
+    margin-bottom: 20px;
+  }
+  
+  label {
+    display: block;
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+  }
+  
+  input[type="text"],
+  textarea {
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    box-sizing: border-box;
+    font-size: 1rem;
+    padding: 10px;
+    width: 100%;
+  }
+  
+  .edit-restaurant {
+    background-color: #008CBA;
+    border: none;
+    border-radius: 3px;
+    color: white;
+    cursor: pointer;
+    font-size: 1rem;
+    padding: 5px 10px;
+    transition: background-color 0.2s ease;
+  }
+  

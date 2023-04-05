@@ -69,7 +69,8 @@ router.get('/edit/:id', isOwner, (req, res, next) => {
 
     Restaurant.findById(req.params.id)
     .then((foundRestaurant) => {
-        res.render('restaurants/edit-restaurant.hbs', {foundRestaurant, session: req.session})
+        foundRestaurant.session = req.session;
+        res.render('restaurants/edit-restaurant.hbs', foundRestaurant)
     })
     .catch((err) => {
         console.log(err)

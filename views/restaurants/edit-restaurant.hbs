@@ -1,16 +1,18 @@
-<h2>Edit Restaurant</h2>
-
-<form action="/restaurants/edit/{{_id}}" method="post">
-
-<label for="">Name</label>
-<input type="text" name="name" value="{{name}}">
-
-<label for="">Description</label>
-<input type="text" name="description" value="{{description}}">
-
-<label for="">Image</label>
-<input type="text" name="imageUrl" value="{{imageUrl}}">
-
-<button type="submit">Edit Restaurant</button>
-
-</form>
+<div class="edit-page-container">
+  <h2>Edit Restaurant</h2>
+  <form action="/restaurants/edit/{{_id}}" method="post">
+    <div class="form-group">
+      <label for="name">Name</label>
+      <input type="text" name="name" id="name" value="{{name}}" required>
+    </div>
+    <div class="form-group">
+      <label for="description">Description</label>
+      <textarea name="description" id="description" rows="4" required>{{description}}</textarea>
+    </div>
+    <div class="form-group">
+      <label for="imageUrl">Image URL</label>
+      <input type="text" name="imageUrl" id="imageUrl" value="{{imageUrl}}" required>
+    </div>
+    <button class='edit-restaurant' type="submit">Edit Restaurant</button>
+  </form>
+</div>
